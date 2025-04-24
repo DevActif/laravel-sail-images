@@ -10,7 +10,6 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   check-and-build:
@@ -56,7 +55,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v5
       with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}84
+        images: ${{ env.REGISTRY }}/${{ github.repository_owner }}/sail-8.4
 
     - name: Build and push Docker image
       if: env.current_version != env.latest_version || github.event_name != 'schedule'
