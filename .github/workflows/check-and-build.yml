@@ -48,16 +48,18 @@ jobs:
 
     - name: Update dependencies if new version is available
       if: env.current_version != env.latest_version
-      run: composer update laravel/sail
+      run: composer update
 
 
     - name: Extract metadata (tags, labels) for Docker
+      if: env.current_version != env.latest_version || github.event_name != 'schedule'
       id: meta
       uses: docker/metadata-action@v5
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}84
 
     - name: Build and push Docker image
+      if: env.current_version != env.latest_version || github.event_name != 'schedule'
       uses: docker/build-push-action@v6
       with:
         context: vendor/laravel/sail/runtimes/8.4
@@ -65,5 +67,5 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         build-args: |
-            WWWGROUP: "sail"
+            WWWGROUP=sail
 
