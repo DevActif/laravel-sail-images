@@ -1,0 +1,12 @@
+{
+    "name": "devactif/laravel-sail-images",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Devactif\\LaravelSailImages\\": "src/"
+        }
+    },
+    "require-dev": {
+        "laravel/sail": "^1.41"
+    }
+}
