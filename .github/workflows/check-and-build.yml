@@ -5,8 +5,8 @@ on:
     - cron: '0 0 * * *' # Runs daily at midnight
   workflow_dispatch:
   push:
-    branches:
-      - master
+    paths:
+        - '.github/workflows/check-and-build.yml'
 
 env:
   REGISTRY: ghcr.io
