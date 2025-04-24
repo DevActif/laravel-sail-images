@@ -64,6 +64,6 @@ jobs:
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
-      env:
-        WWWGROUP: sail
-        
+        build-args: |
+            WWWGROUP: "sail"
+
