@@ -55,4 +55,4 @@ jobs:
       with:
         context: vendor/laravel/sail/runtimes/8.4
         push: true
-        tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/laravel-sail84:latest
+        tags: ${{ env.REGISTRY }}/$(echo ${{ github.repository_owner }}/laravel-sail84 | tr '[:upper:]' '[:lower:]'):latest
